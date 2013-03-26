@@ -1,5 +1,6 @@
 import os
 import manage
+import sys
 
 # Django settings for {{ project_name }} project.
 
