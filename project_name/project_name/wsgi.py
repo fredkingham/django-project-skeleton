@@ -15,6 +15,9 @@ framework.
 """
 import os
 
+import site
+site.addsitedir('/home/ec2-user/.virtualenvs/{{ project_name }}/lib/python2.6/site-packages')
+
 os.environ.setdefault("{{ project_name }}".upper(), "{{ project_name }}.settings")
 
 # This application object is used by any WSGI server configured to use this
@@ -22,7 +25,3 @@ os.environ.setdefault("{{ project_name }}".upper(), "{{ project_name }}.settings
 # setting points here.
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-
-# Apply WSGI middleware here.
-# from helloworld.wsgi import HelloWorldApplication
-# application = HelloWorldApplication(application)
