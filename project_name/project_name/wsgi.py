@@ -1,5 +1,5 @@
 """
-WSGI config for {{ project_name }} project.
+WSGI config for fredkingham_site project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
@@ -13,15 +13,25 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
-import os
-
+import sys
 import site
-site.addsitedir('/home/ec2-user/.virtualenvs/{{ project_name }}/lib/python2.6/site-packages')
+from os.path import basename, dirname
+from os import environ
 
-os.environ.setdefault("{{ project_name }}".upper(), "{{ project_name }}.settings")
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
+
+site.addsitedir('/home/ubuntu/.virtualenvs/{{ project_name }}/lib/python2.7/site-packages')
+sys.path.append('/home/ubuntu/fredkingham_site_project/{{ project_name }}')
+settings_module = basename(dirname(__file__)) + '.settings'
+environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module)
+
+
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+
+# Apply WSGI middleware here.
+# from helloworld.wsgi import HelloWorldApplication
+# application = HelloWorldApplication(application)
