@@ -1,6 +1,7 @@
 import os
 import manage
 import sys
+import private_settings
 
 # Django settings for {{ project_name }} project.
 
@@ -91,7 +92,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'f95p1uf3^n*+y7l1c^wt4z)rgh!2opheno((7u9y9+8i27sx04'
+SECRET_KEY = private_settings.SECRET_KEY
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
